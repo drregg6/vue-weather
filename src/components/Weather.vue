@@ -5,8 +5,16 @@
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex';
   export default {
-    name: "Weather"
+    name: "Weather",
+    computed: mapGetters(["getState"]),
+    methods: {
+      ...mapActions(["getWeather"])
+    },
+    created() {
+      this.getWeather();
+    }
   }
 </script>
 
