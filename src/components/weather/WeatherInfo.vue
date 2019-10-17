@@ -4,15 +4,16 @@
       {{ myTemp }}
     </p>
     <p>
-      {{ main }}
+      {{ getMain() }}
     </p>
     <p>
-      {{ myDesc }}
+      {{ getDesc() }}
     </p>
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import fahrToCels from '../../helpers/fahrToCels';
   import celsToFahr from '../../helpers/celsToFahr';
   import kelvinToCelsius from '../../helpers/kelvinToCelsius';
@@ -20,8 +21,8 @@
 
   export default {
     name: "WeatherInfo",
-    props: ["main", "temp", "desc"],
     methods: {
+      ...mapGetters(["getTemp", "getMain", "getDesc"]),
       kelvinToCelsius,
       fahrToCels,
       celsToFahr,
@@ -36,9 +37,11 @@
     },
     data() {
       return {
-        myTemp: kelvinToCelsius(this.temp),
-        myDesc: capitalize(this.desc)
+        myTemp: kelvinToCelsius(this.getTemp())
       }
+    },
+    updated() {
+      this.myTemp = kelvinToCelsius(this.getTemp())
     }
   }
 </script>

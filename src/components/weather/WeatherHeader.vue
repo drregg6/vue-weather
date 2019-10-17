@@ -1,13 +1,15 @@
 <template>
   <div>
-    <h1>{{ name }}</h1>
+    <h1>{{ getLocation() }}</h1>
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
   export default {
     name: "WeatherHeader",
-    props: ["name"]
+    methods: mapGetters(["getLocation"])
   }
 </script>
 

@@ -6,6 +6,10 @@ const state = {
 };
 
 const getters = {
+  getLocation: () => state.weather.name,
+  getTemp: () => state.weather.main.temp,
+  getMain: () => state.weather.weather[0].main,
+  getDesc: () => state.weather.weather[0].description,
   getState: () => state.weather
 };
 

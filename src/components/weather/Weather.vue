@@ -1,34 +1,19 @@
 <template>
   <div class="weather">
-    <WeatherHeader v-bind:name="weather.weather.name" />
-    <WeatherInfo
-      v-bind:desc="weather.weather.weather[0].description"
-      v-bind:temp="weather.weather.main.temp"
-      v-bind:main="weather.weather.weather[0].main"
-    />
+    <WeatherHeader />
+    <WeatherInfo />
   </div>
 </template>
 
 <script>
   import WeatherHeader from './WeatherHeader';
   import WeatherInfo from './WeatherInfo';
-  import { mapState, mapGetters, mapActions } from 'vuex';
 
   export default {
     name: "Weather",
     components: {
       WeatherHeader,
       WeatherInfo
-    },
-    computed: {
-      ...mapGetters(["getState"]),
-      ...mapState(["weather"])
-    },
-    methods: {
-      ...mapActions(["getWeather"])
-    },
-    created() {
-      this.getWeather();
     }
   }
 </script>
