@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form v-on:submit="onSubmit">
     <input type="text" v-model="search" placeholder="City, State, or Zip">
     <input type="submit" value="Submit">
   </form>
@@ -7,7 +7,22 @@
 
 <script>
   export default {
-    name: "Search"
+    name: "Search",
+    data() {
+      return {
+        search: ''
+      }
+    },
+    methods: {
+      onSubmit: function(event) {
+        event.preventDefault();
+        // eslint-disable-next-line
+        console.log(this.search);
+        // Will search for new city
+
+        this.search = '';
+      }
+    }
   }
 </script>
 
