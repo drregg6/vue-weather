@@ -6,6 +6,8 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
+
   export default {
     name: "Search",
     data() {
@@ -14,11 +16,13 @@
       }
     },
     methods: {
+      ...mapActions(["getWeather"]),
       onSubmit: function(event) {
         event.preventDefault();
         // eslint-disable-next-line
         console.log(this.search);
         // Will search for new city
+        this.getWeather(this.search);
 
         this.search = '';
       }
