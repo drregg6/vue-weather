@@ -14,7 +14,10 @@
 footer {
   padding: 2rem 0;
   margin: 1rem auto;
+  margin-bottom: 0;
   background: darkblue;
+  text-align: center;
+  color: #fff;
 }
 
 a {

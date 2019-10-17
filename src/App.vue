@@ -2,6 +2,7 @@
   <div id="app">
     <div class="content">
       <Header />
+      <Search />
       <Weather />
       <Footer />
     </div>
@@ -10,13 +11,15 @@
 
 <script>
 import Header from './components/layout/Header';
-import Weather from './components/Weather';
+import Search from './components/Search';
+import Weather from './components/weather/Weather';
 import Footer from './components/layout/Footer';
 
 export default {
   name: 'app',
   components: {
     Header,
+    Search,
     Weather,
     Footer
   }

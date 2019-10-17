@@ -13,7 +13,7 @@ const actions = {
   async getWeather({ commit }) {
     try {
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${WEATHER_API}`
+        `https://api.openweathermap.org/data/2.5/weather?q=Philadelphia&appid=${WEATHER_API}`
       );
       commit("commitWeather", res.data);
       /* eslint-disable no-console */
