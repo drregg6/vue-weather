@@ -16,13 +16,13 @@
       }
     },
     methods: {
-      ...mapActions(["getWeather"]),
+      ...mapActions(["getWeatherByLoc"]),
       onSubmit: function(event) {
         event.preventDefault();
         // eslint-disable-next-line
         console.log(this.search);
         // Will search for new city
-        this.getWeather(this.search);
+        this.getWeatherByLoc(this.search);
 
         this.search = '';
       }

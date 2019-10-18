@@ -1,5 +1,4 @@
 import axios from 'axios';
-import kelvinToCelsius from '../../helpers/kelvinToCelsius';
 const WEATHER_API = process.env.VUE_APP_WEATHER_API;
 
 const state = {
@@ -18,45 +17,46 @@ const state = {
 
 const getters = {
   getLocation: () => state.weather.name,
-  getTemp: () => kelvinToCelsius(state.weather.main.temp),
+  getTemp: () => state.weather.main.temp,
   getMain: () => state.weather.weather[0].main,
   getDesc: () => state.weather.weather[0].description,
   getState: () => state.weather
 };
 
 const actions = {
-  async getWeather({ commit }, location=null) {
-    if (location !== null) {
-      try {
-        const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${WEATHER_API}`
-        )
-        commit("commitWeather", res.data);
-        /* eslint-disable no-console */
-        console.log(res.data);
-        /* eslint-enable no-console */
-      } catch(err) {
-        // eslint-disable-next-line
-        console.error(err);
-      }
-    } else {
-      try {
-        const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=Philadelphia&appid=${WEATHER_API}`
-        );
-        commit("commitWeather", res.data);
-        /* eslint-disable no-console */
-        console.log(res.data);
-        /* eslint-enable no-console */
-      } catch(err) {
-        // eslint-disable-next-line
-        console.error(err);
-      }
+  async getWeatherByLoc({ commit }, location) {
+    try {
+      const res = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${WEATHER_API}`
+      )
+      commit("commitWeatherByLoc", res.data);
+      /* eslint-disable no-console */
+      console.log(res.data);
+      /* eslint-enable no-console */
+    } catch(err) {
+      // eslint-disable-next-line
+      console.error(err);
+    }
+  },
+
+  async getWeather({ commit }) {
+    try {
+      const res = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=Philadelphia&appid=${WEATHER_API}`
+      );
+      commit("commitWeather", res.data);
+      /* eslint-disable no-console */
+      console.log(res.data);
+      /* eslint-enable no-console */
+    } catch(err) {
+      // eslint-disable-next-line
+      console.error(err);
     }
   }
 };
 
 const mutations = {
+  commitWeatherByLoc: (state, data) => (state.weather = data),
   commitWeather: (state, data) => (state.weather = data)
 };
 

@@ -8,12 +8,17 @@
 <script>
   import WeatherHeader from './WeatherHeader';
   import WeatherInfo from './WeatherInfo';
+  import { mapActions } from 'vuex';
 
   export default {
     name: "Weather",
+    methods: mapActions(["getWeather"]),
     components: {
       WeatherHeader,
       WeatherInfo
+    },
+    created() {
+      this.getWeather();
     }
   }
 </script>
