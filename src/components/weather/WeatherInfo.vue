@@ -1,13 +1,13 @@
 <template>
   <div class="weather-info">
     <p v-on:click="onClick">
-      {{ myTemp }}
+      {{ getTemp }}
     </p>
     <p>
-      {{ getMain() }}
+      {{ getMain }}
     </p>
     <p>
-      {{ getDesc() }}
+      {{ capitalize(getDesc) }}
     </p>
   </div>
 </template>
@@ -21,30 +21,28 @@
 
   export default {
     name: "WeatherInfo",
+    computed: mapGetters(["getTemp", "getMain", "getDesc", "getState"]),
     methods: {
-      ...mapGetters(["getTemp", "getMain", "getDesc", "getState"]),
       kelvinToCelsius,
       fahrToCels,
       celsToFahr,
       capitalize,
       onClick: function() {
-        if (this.myTemp.slice(-1) === 'C') {
-          this.myTemp = celsToFahr(this.myTemp);
+        if (this.getTemp.slice(-1) === 'C') {
+          // eslint-disable-next-line
+          this.getTemp = celsToFahr(this.getTemp);
         } else {
-          this.myTemp = fahrToCels(this.myTemp);
+          this.getTemp = fahrToCels(this.getTemp);
         }
       }
     },
     data() {
       return {
-        myTemp: kelvinToCelsius(this.getState().main.temp),
-        myMain: this.getState().weather[0].main,
-        myDesc: this.getState().weather[0].desc
-
+        myTemp: this.kelvinToCelsius(this.getTemp())
       }
     },
     updated() {
-      this.myTemp = kelvinToCelsius(this.getTemp())
+      this.myTemp = this.kelvinToCelsius(this.getTemp())
     }
   }
 </script>

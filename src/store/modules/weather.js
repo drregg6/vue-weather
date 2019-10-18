@@ -1,12 +1,11 @@
 import axios from 'axios';
+import kelvinToCelsius from '../../helpers/kelvinToCelsius';
 const WEATHER_API = process.env.VUE_APP_WEATHER_API;
 
 const state = {
   weather: {
     name: String,
-    main: {
-      temp: Number
-    },
+    main: {},
     weather: [
       {
         id: Number,
@@ -19,7 +18,7 @@ const state = {
 
 const getters = {
   getLocation: () => state.weather.name,
-  getTemp: () => state.weather.main.temp,
+  getTemp: () => kelvinToCelsius(state.weather.main.temp),
   getMain: () => state.weather.weather[0].main,
   getDesc: () => state.weather.weather[0].description,
   getState: () => state.weather
