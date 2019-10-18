@@ -2,7 +2,19 @@ import axios from 'axios';
 const WEATHER_API = process.env.VUE_APP_WEATHER_API;
 
 const state = {
-  weather: {}
+  weather: {
+    name: String,
+    main: {
+      temp: Number
+    },
+    weather: [
+      {
+        id: Number,
+        main: String,
+        description: String
+      }
+    ]
+  }
 };
 
 const getters = {

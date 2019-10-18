@@ -22,7 +22,7 @@
   export default {
     name: "WeatherInfo",
     methods: {
-      ...mapGetters(["getTemp", "getMain", "getDesc"]),
+      ...mapGetters(["getTemp", "getMain", "getDesc", "getState"]),
       kelvinToCelsius,
       fahrToCels,
       celsToFahr,
@@ -37,7 +37,10 @@
     },
     data() {
       return {
-        myTemp: kelvinToCelsius(this.getTemp())
+        myTemp: kelvinToCelsius(this.getState().main.temp),
+        myMain: this.getState().weather[0].main,
+        myDesc: this.getState().weather[0].desc
+
       }
     },
     updated() {
