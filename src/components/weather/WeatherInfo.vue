@@ -1,11 +1,3 @@
-/*
-
-WATCH
-might be the solution
-https://dev.to/viniciuskneves/watch-for-vuex-state-changes-2mgj
-
-*/
-
 <template>
   <div class="weather-info">
     <div class="temp" v-on:click="onClick">

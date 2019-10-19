@@ -16,14 +16,18 @@
       }
     },
     methods: {
-      ...mapActions(["getWeatherByLoc"]),
+      ...mapActions(["getWeatherByLoc", "getWeatherByZip"]),
       onSubmit: function(event) {
         event.preventDefault();
         // eslint-disable-next-line
         console.log(this.search);
         // Will search for new city
-        this.getWeatherByLoc(this.search);
-
+        if (/^\d+$/.test(this.search)) {
+          // eslint-disable-next-line
+          this.getWeatherByZip(this.search);
+        } else {
+          this.getWeatherByLoc(this.search);
+        }
         this.search = '';
       }
     }

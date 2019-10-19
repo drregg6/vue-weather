@@ -1,7 +1,9 @@
 <template>
   <header>
     <h1>Weather App</h1>
-    <img :src="src" />
+    <p>
+      <img :src="src">
+    </p>
   </header>
 </template>
 
@@ -13,10 +15,11 @@
     methods: mapActions(["findGiphy"]),
     created() {
       this.findGiphy();
+      this.src = this.getGiphy;
     },
     data() {
       return {
-        src: this.getGiphy // returns undefined
+        src: ''
       }
     }
   }
@@ -35,7 +38,9 @@ h1 {
 }
 
 img {
-  width: 100%;
-  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  width: 250px;
+  height: 250px;
 }
 </style>
