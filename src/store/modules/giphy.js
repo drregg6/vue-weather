@@ -3,12 +3,16 @@ const GIPHY_API = process.env.VUE_APP_GIPHY_API;
 
 const state = {
   giphy: {
-    image_original_url: ""
+    images: {
+      original: {
+        url: ''
+      }
+    }
   }
 };
 
 const getters = {
-  getGiphy: (state) => state.giphy.image_original_url
+  getGiphy: (state) => state.giphy.images.original.url
 };
 
 const actions = {

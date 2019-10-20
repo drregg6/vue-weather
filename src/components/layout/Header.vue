@@ -1,9 +1,11 @@
 <template>
   <header>
     <h1>Weather App</h1>
-    <div>
-      <p>{{ getGiphy }}</p>
-      <img src="source">
+    <div v-if="getGiphy">
+      <img :src='source'>
+    </div>
+    <div v-else>
+      <p>Loading</p>
     </div>
   </header>
 </template>
@@ -17,8 +19,13 @@
     created() {
       this.findGiphy();
     },
+    updated() {
+      this.source = this.getGiphy;
+    },
     data() {
-      source: this.getGiphy
+      return {
+        source: ""
+      }
     }
   }
 </script>
