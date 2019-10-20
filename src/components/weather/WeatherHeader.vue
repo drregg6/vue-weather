@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1 v-if="getLocation">{{ getLocation }}</h1>
-    <h1 v-else>Finding Location</h1>
+    <div v-if="getLocation"><h1>{{ getLocation }}</h1></div>
+    <div v-else><h1>Finding location...</h1></div>
   </div>
 </template>
 

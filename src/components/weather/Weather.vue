@@ -31,7 +31,6 @@
   justify-content: space-around;
 
   text-align: center;
-  height: 50vh;
   background: yellow;
 }
 </style>

@@ -1,6 +1,12 @@
 <template>
   <div class="weather-info">
-    <div v-if="getState">
+    <div v-if="getGiphy">
+      <img :src="source">
+    </div>
+    <div v-else>
+      <p>Loading</p>
+    </div>
+    <div v-if="getTemp">
       <div class="temp" v-on:click="onClick">
         <p v-if="cels === true">
           {{ kelvinToCelsius(getTemp) }}
@@ -23,7 +29,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapGetters, mapActions } from 'vuex';
   import kelvinToCelsius from '../../helpers/kelvinToCelsius';
   import kelvinToFahr from '../../helpers/kelvinToFahr';
   import capitalize from '../../helpers/capitalize';
@@ -31,9 +37,10 @@
   export default {
     name: "WeatherInfo",
     computed: {
-      ...mapGetters(["getMain", "getTemp", "getDesc", "getState"])
+      ...mapGetters(["getMain", "getTemp", "getDesc", "getState", "getGiphy"])
     },
     methods: {
+      ...mapActions(["findGiphy"]),
       capitalize,
       kelvinToCelsius,
       kelvinToFahr,
@@ -41,9 +48,16 @@
         this.cels = !this.cels
       }
     },
+    created() {
+      this.findGiphy();
+    },
+    updated() {
+      this.source = this.getGiphy;
+    },
     data() {
       return {
-        cels: true
+        cels: true,
+        source: ""
       }
     }
   }
