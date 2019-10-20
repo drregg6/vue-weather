@@ -1,9 +1,10 @@
 <template>
   <header>
     <h1>Weather App</h1>
-    <p>
-      <img :src="src">
-    </p>
+    <div>
+      <p>{{ getGiphy }}</p>
+      <img src="source">
+    </div>
   </header>
 </template>
 
@@ -15,12 +16,9 @@
     methods: mapActions(["findGiphy"]),
     created() {
       this.findGiphy();
-      this.src = this.getGiphy;
     },
     data() {
-      return {
-        src: ''
-      }
+      source: this.getGiphy
     }
   }
 </script>

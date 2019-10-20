@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>{{ getLocation() }}</h1>
+    <h1 v-if="getLocation">{{ getLocation }}</h1>
+    <h1 v-else>Finding Location</h1>
   </div>
 </template>
 
@@ -9,7 +10,7 @@
 
   export default {
     name: "WeatherHeader",
-    methods: mapGetters(["getLocation"])
+    computed: mapGetters(["getLocation"])
   }
 </script>
 
