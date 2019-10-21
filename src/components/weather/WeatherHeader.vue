@@ -20,4 +20,10 @@
     font-weight: bold;
     letter-spacing: 1.25px;
   }
+  @media  only screen and (max-width: 500px) {
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  }
 </style>

@@ -1,9 +1,3 @@
-/*
-
-=== TODOS ===
-- Style style style
-
-*/
 <template>
   <div class="weather">
     <WeatherHeader />
@@ -37,6 +31,8 @@
   justify-content: space-around;
 
   text-align: center;
-  background: yellow;
+  padding: 2.5rem 0;
+  border: 5px solid black;
+  border-radius: 5px;
 }
 </style>

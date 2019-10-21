@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content {
-  max-width: 1100px;
+  max-width: 750px;
   margin: 0 auto;
 }
 </style>

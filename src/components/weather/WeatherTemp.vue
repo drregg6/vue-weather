@@ -35,5 +35,13 @@
 <style scoped>
 .temp {
   cursor: pointer;
+  display: block;
+  width: max-content;
+  margin: .5rem auto;
+}
+
+p {
+  font-size: 2rem;
+  margin: 0;
 }
 </style>
