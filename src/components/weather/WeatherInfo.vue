@@ -37,7 +37,7 @@
   export default {
     name: "WeatherInfo",
     computed: {
-      ...mapGetters(["getMain", "getTemp", "getDesc", "getState", "getGiphy"])
+      ...mapGetters(["getId", "getMain", "getTemp", "getDesc", "getState", "getGiphy"])
     },
     methods: {
       ...mapActions(["searchGiphy"]),
@@ -49,7 +49,17 @@
       }
     },
     created() {
-      this.searchGiphy("rain")
+      this.searchGiphy(this.getId)
+    },
+    watch: {
+      getId(newValue, oldValue) {
+        // eslint-disable-next-line
+        console.log(`The old value is ${oldValue} and the new val is ${newValue}`);
+
+        if (oldValue !== newValue) {
+          this.source = this.searchGiphy(newValue);
+        }
+      }
     },
     updated() {
       this.source = this.getGiphy;

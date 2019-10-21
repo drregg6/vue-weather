@@ -20,7 +20,8 @@ const getters = {
   getTemp: () => state.weather.main.temp,
   getMain: () => state.weather.weather[0].main,
   getDesc: () => state.weather.weather[0].description,
-  getState: () => state.weather
+  getState: () => state.weather,
+  getId: () => state.weather.weather[0].id
 };
 
 const actions = {

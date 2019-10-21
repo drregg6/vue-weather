@@ -39,7 +39,35 @@ const actions = {
     }
   },
 
-  async searchGiphy({ commit }, searchTerm) {
+  async searchGiphy({ commit }, num) {
+    let digit = parseInt(("" + num)[0]);
+    let searchTerm = "";
+    switch(digit) {
+      case 2:
+        searchTerm = "thunderstorm";
+        break;
+      case 3:
+        searchTerm = "drizzle";
+        break;
+      case 5:
+        searchTerm = "rain";
+        break;
+      case 6:
+        searchTerm = "snow";
+        break;
+      case 7:
+        searchTerm = "fog";
+        break;
+      case 8:
+        searchTerm = "sun";
+        break;
+      case 9:
+        searchTerm = "cloud";
+        break;
+      default:
+        searchTerm = "sunny";
+    }
+
     try {
       const res = await axios.get(
         `https://api.giphy.com/v1/gifs/search?q="${searchTerm}"&api_key=${GIPHY_API}`

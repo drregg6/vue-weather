@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
 
   export default {
     name: "Search",
@@ -15,8 +15,9 @@
         search: ''
       }
     },
+    computed: mapGetters(["getId"]),
     methods: {
-      ...mapActions(["getWeatherByLoc", "getWeatherByZip"]),
+      ...mapActions(["getWeatherByLoc", "getWeatherByZip", "searchGiphy"]),
       onSubmit: function(event) {
         event.preventDefault();
         // eslint-disable-next-line
