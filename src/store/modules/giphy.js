@@ -40,8 +40,12 @@ const actions = {
   },
 
   async searchGiphy({ commit }, num) {
+    let timeOfDay = new Date();
+    timeOfDay = timeOfDay.getHours();
     let digit = parseInt(("" + num)[0]);
     let searchTerm = "";
+    // eslint-disable-next-line
+    console.log(timeOfDay);
     switch(digit) {
       case 2:
         searchTerm = "thunderstorm";
@@ -59,10 +63,18 @@ const actions = {
         searchTerm = "fog";
         break;
       case 8:
-        searchTerm = "sun";
+        if (timeOfDay >= 6 && timeOfDay <= 18) {
+          searchTerm = "sun";
+        } else {
+          searchTerm = "moon";
+        }
         break;
       case 9:
-        searchTerm = "cloud";
+          if (timeOfDay >= 6 && timeOfDay <= 18) {
+            searchTerm = "cloud";
+          } else {
+            searchTerm = "moon";
+          }
         break;
       default:
         searchTerm = "sunny";
