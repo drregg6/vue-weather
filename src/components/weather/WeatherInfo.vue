@@ -40,7 +40,7 @@
       ...mapGetters(["getMain", "getTemp", "getDesc", "getState", "getGiphy"])
     },
     methods: {
-      ...mapActions(["findGiphy"]),
+      ...mapActions(["searchGiphy"]),
       capitalize,
       kelvinToCelsius,
       kelvinToFahr,
@@ -49,7 +49,7 @@
       }
     },
     created() {
-      this.findGiphy();
+      this.searchGiphy("rain")
     },
     updated() {
       this.source = this.getGiphy;

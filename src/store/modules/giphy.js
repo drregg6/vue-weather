@@ -8,7 +8,16 @@ const state = {
         url: ''
       }
     }
-  }
+  },
+  giphies: [
+    {
+      images: {
+        original: {
+          url: String
+        }
+      }
+    }
+  ]
 };
 
 const getters = {
@@ -16,15 +25,33 @@ const getters = {
 };
 
 const actions = {
-  async findGiphy({ commit }) {
+  async findRandom({ commit }) {
     try {
       const res = await axios.get(
         `https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API}`
       )
       // eslint-disable-next-line
       console.log(res.data.data.images.original.url)
-      commit("commitGiphy", res.data.data);
+      commit("commitRandom", res.data.data);
     } catch (err) {
+      // eslint-disable-next-line
+      console.error(err);
+    }
+  },
+
+  async searchGiphy({ commit }, searchTerm) {
+    try {
+      const res = await axios.get(
+        `https://api.giphy.com/v1/gifs/search?q="${searchTerm}"&api_key=${GIPHY_API}`
+      );
+
+      const obj = res.data.data[Math.floor(Math.random()*res.data.data.length)];
+      
+      // eslint-disable-next-line
+      console.log(obj);
+
+      commit("commitSearch", obj);
+    } catch(err) {
       // eslint-disable-next-line
       console.error(err);
     }
@@ -32,7 +59,8 @@ const actions = {
 };
 
 const mutations = {
-  commitGiphy: (state, data) => state.giphy = data
+  commitRandom: (state, data) => state.giphy = data,
+  commitSearch: (state, data) => state.giphy = data
 };
 
 export default {
