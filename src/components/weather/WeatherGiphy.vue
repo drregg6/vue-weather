@@ -19,7 +19,7 @@
       this.searchGiphy(this.getId);
     },
     watch: {
-      watchId(newValue, oldValue) {
+      getId(newValue, oldValue) {
         if (oldValue !== newValue) {
           this.source = this.searchGiphy(newValue);
         }

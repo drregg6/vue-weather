@@ -43,9 +43,8 @@ const actions = {
     let timeOfDay = new Date();
     timeOfDay = timeOfDay.getHours();
     let digit = parseInt(("" + num)[0]);
+    let thirdDigit = parseInt(("" + num)[2]);
     let searchTerm = "";
-    // eslint-disable-next-line
-    console.log(timeOfDay);
     switch(digit) {
       case 2:
         searchTerm = "thunderstorm";
@@ -63,18 +62,19 @@ const actions = {
         searchTerm = "fog";
         break;
       case 8:
-        if (timeOfDay >= 6 && timeOfDay <= 18) {
-          searchTerm = "sun";
-        } else {
-          searchTerm = "moon";
-        }
-        break;
-      case 9:
+        if (thirdDigit === 0) {
           if (timeOfDay >= 6 && timeOfDay <= 18) {
-            searchTerm = "cloud";
+            searchTerm = "sun";
           } else {
             searchTerm = "moon";
           }
+        } else {
+          if (timeOfDay >= 6 && timeOfDay <= 18) {
+            searchTerm = "clouds";
+          } else {
+            searchTerm = "moon";
+          }
+        }
         break;
       default:
         searchTerm = "sunny";
@@ -86,9 +86,6 @@ const actions = {
       );
 
       const obj = res.data.data[Math.floor(Math.random()*res.data.data.length)];
-      
-      // eslint-disable-next-line
-      console.log(obj);
 
       commit("commitSearch", obj);
     } catch(err) {
