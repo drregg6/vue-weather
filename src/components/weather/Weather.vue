@@ -1,7 +1,6 @@
 /*
 
 === TODOS ===
-- Ensure the places are searchable
 - Add ${state} and/or ${country} to weatherHeader
 - Style style style
 - IF timeOfDay is night

@@ -11,7 +11,10 @@ const state = {
         main: String,
         description: String
       }
-    ]
+    ],
+    sys: {
+      country: String
+    }
   }
 };
 
@@ -19,6 +22,7 @@ const getters = {
   getLocation: () => state.weather.name,
   getTemp: () => state.weather.main.temp,
   getMain: () => state.weather.weather[0].main,
+  getCountry: () => state.weather.sys.country,
   getDesc: () => state.weather.weather[0].description,
   getState: () => state.weather,
   getId: () => state.weather.weather[0].id

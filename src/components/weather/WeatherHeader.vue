@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="getLocation"><h1>{{ getLocation }}</h1></div>
+    <div v-if="getLocation"><h1>{{ getLocation }}, {{ getCountry }}</h1></div>
     <div v-else><h1>Finding location...</h1></div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 
   export default {
     name: "WeatherHeader",
-    computed: mapGetters(["getLocation"])
+    computed: mapGetters(["getLocation", "getCountry"])
   }
 </script>
 
